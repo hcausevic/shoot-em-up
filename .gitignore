@@ -56,10 +56,10 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-#*.apk
-#*.aab
-#*.unitypackage
-#*.app
+*.apk
+*.aab
+*.unitypackage
+*.app
 
 .idea
 mono_crash*
