@@ -56,16 +56,19 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-*.apk
-*.aab
-*.unitypackage
-*.app
+#*.apk
+#*.aab
+#*.unitypackage
+#*.app
+
 .idea
 mono_crash*
 UIElementsSchema
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+**/*.DS_STORE
 
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
