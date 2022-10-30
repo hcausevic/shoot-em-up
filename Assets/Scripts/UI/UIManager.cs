@@ -52,6 +52,14 @@ public class UIManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.OpenURL("about:blank");
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            Application.ExternalEval("window.close()");
+        }
+        else
+        {
+            Application.Quit();
+        }
+        
     }
 }
