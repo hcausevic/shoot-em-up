@@ -112,6 +112,7 @@ MonoBehaviour:
   distance: 4
   attackRange: 5
   isMovingRight: 1
+  attackSound: {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
 --- !u!61 &906416107061306632
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -84,10 +84,7 @@ public class AliveEnemy : MonoBehaviour
 
     public void Freeze()
     {
-        // ice.gameObject.SetActive(true);
         _isFrozen = true;
-        // skin.GetComponent<Animator>().enabled = false;
-        // _currentDamage = 0;
     }
 
     private void Die()

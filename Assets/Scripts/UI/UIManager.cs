@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject startScreen;
     [SerializeField] private PlayerMovement player;
-    
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip winSound;
+
+    private PlayerSoundManager _playerSoundManager;
     private GemManager _gemManager;
     
     [DllImport("__Internal")]
@@ -20,6 +23,7 @@ public class UIManager : MonoBehaviour
         gameOverScreen.SetActive(false);
         winScreen.SetActive(false);
         _gemManager = FindObjectOfType<GemManager>();
+        _playerSoundManager = FindObjectOfType<PlayerSoundManager>();
     }
 
     private void Update()
@@ -33,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
+        _playerSoundManager.Play(deathSound);
         gameOverScreen.SetActive(true);
     }
     
@@ -45,6 +50,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Gem").Length == 0)
         {
+            _playerSoundManager.Play(winSound);
             player.Win();
             winScreen.SetActive(true);
         }

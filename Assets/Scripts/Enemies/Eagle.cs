@@ -7,6 +7,9 @@ public class Eagle : AliveEnemy
     [SerializeField] private float distance;
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private bool isMovingRight = false;
+    [SerializeField] private AudioClip attackSound;
+    
+    private PlayerSoundManager _playerSoundManager;
     
     private Animator _skinAnimator;
     private const float AttackCooldown = 3f;
@@ -32,6 +35,7 @@ public class Eagle : AliveEnemy
         }
         
         _skinAnimator = base.skin.GetComponent<Animator>();
+        _playerSoundManager = FindObjectOfType<PlayerSoundManager>();
         var position = transform.position;
         _leftEdgePosition = position.x - distance;
         _rightEdgePosition = position.x + distance;
@@ -58,6 +62,7 @@ public class Eagle : AliveEnemy
         
         if (_isAttacking)
         {
+            _playerSoundManager.Play(attackSound);
             transform.Translate(_attackDestination * (Time.deltaTime * speed));
         }
         else

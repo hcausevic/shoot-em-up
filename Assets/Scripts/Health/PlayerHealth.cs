@@ -3,10 +3,12 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float startingHealth = 3;
+    [SerializeField] private AudioClip hurtSound;
     public float CurrentHealth { get; private set; }
     private Animator _animator;
     private bool _isDead;
     private UIManager _uiManager;
+    private PlayerSoundManager _playerSoundManager;
     
     private static readonly int Hurt = Animator.StringToHash("hurt");
     private static readonly int Die = Animator.StringToHash("die");
@@ -16,10 +18,12 @@ public class PlayerHealth : MonoBehaviour
         CurrentHealth = startingHealth;
         _animator = GetComponent<Animator>();
         _uiManager = FindObjectOfType<UIManager>();
+        _playerSoundManager = FindObjectOfType<PlayerSoundManager>();
     }
 
     public void TakeDamage(float damage)
     {
+        _playerSoundManager.Play(hurtSound);
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, startingHealth);
         if (CurrentHealth > 0)
         {

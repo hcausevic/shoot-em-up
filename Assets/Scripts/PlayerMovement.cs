@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -9,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private LayerMask trapLayer;
+    [SerializeField] private AudioClip jumpSound;
 
     private Rigidbody2D _body;
     private WeaponManager _weaponManager;
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float _playerScaleAmount = 1f;
     private bool _isLookingRight = true;
     private UIManager _uiManager;
+    private PlayerSoundManager _playerSoundManager;
 
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         _weaponManager = FindObjectOfType<WeaponManager>();
         _shrinkManager = FindObjectOfType<ShrinkManager>();
         _uiManager = FindObjectOfType<UIManager>();
+        _playerSoundManager = FindObjectOfType<PlayerSoundManager>();
     }
 
     private void Update()
@@ -52,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && OnGround())
         {
-            print("Jump");
             Jump();
         }
         _animator.SetBool(IsRunning, horizontalInput != 0);
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        _playerSoundManager.Play(jumpSound);
         _body.velocity = new Vector2(_body.velocity.x, speed);
         _animator.SetTrigger(Hop);
     }
