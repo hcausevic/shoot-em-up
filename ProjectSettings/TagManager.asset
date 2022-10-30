@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Gem
   - Potion
+  - Home
   layers:
   - Default
   - TransparentFX

@@ -18,10 +18,12 @@ public class PlayerMovement : MonoBehaviour
     public bool disabled;
     private float _playerScaleAmount = 1f;
     private bool _isLookingRight = true;
+    private UIManager _uiManager;
 
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
     private static readonly int Hop = Animator.StringToHash("jump");
+    private static readonly int Won = Animator.StringToHash("Won");
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _weaponManager = FindObjectOfType<WeaponManager>();
         _shrinkManager = FindObjectOfType<ShrinkManager>();
+        _uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Update()
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && OnGround())
         {
+            print("Jump");
             Jump();
         }
         _animator.SetBool(IsRunning, horizontalInput != 0);
@@ -74,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     private bool OnGround()
     {
         var bounds = _boxCollider.bounds;
-        var raycastHit2D = Physics2D.BoxCast(bounds.center, bounds.size, 0, Vector2.down, 0.01f, groundLayer);
+        var raycastHit2D = Physics2D.BoxCast(bounds.center, bounds.size, 0, Vector2.down, 0.03f, groundLayer);
         return raycastHit2D.collider != null;
     }
 
@@ -99,5 +103,19 @@ public class PlayerMovement : MonoBehaviour
     {
         var scale = _isLookingRight ? Vector3.one : new Vector3(-1, 1, 1);
         _body.transform.localScale = scale * _playerScaleAmount;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Home"))
+        {
+            _uiManager.CheckIfWin();
+        }
+    }
+
+    public void Win()
+    {
+        _animator.SetTrigger(Won);
+        disabled = true;
     }
 }

@@ -6,12 +6,13 @@ public class Eagle : AliveEnemy
     [SerializeField] private float speed;
     [SerializeField] private float distance;
     [SerializeField] private float attackRange = 4f;
+    [SerializeField] private bool isMovingRight = false;
     
     private Animator _skinAnimator;
     private const float AttackCooldown = 3f;
     private float _leftEdgePosition;
     private float _rightEdgePosition;
-    private bool _isMovingRight;
+    // private bool _isMovingRight;
     private bool _canAttack;
     private float _timeSinceAttack = Mathf.Infinity;
     private Vector3 _attackDestination;
@@ -24,6 +25,12 @@ public class Eagle : AliveEnemy
     private new void Awake()
     {
         base.Awake();
+        var allEagles = FindObjectsOfType<Eagle>();
+        foreach (var eagle in allEagles)
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), eagle.GetComponent<BoxCollider2D>());
+        }
+        
         _skinAnimator = base.skin.GetComponent<Animator>();
         var position = transform.position;
         _leftEdgePosition = position.x - distance;
@@ -65,7 +72,7 @@ public class Eagle : AliveEnemy
         if (!_isAttacking)
         {
             
-            if (_isMovingRight)
+            if (isMovingRight)
             {
                 base.Move(MoveRight);
                 return;
@@ -84,7 +91,7 @@ public class Eagle : AliveEnemy
             transform.position = new Vector3(position.x + speed * Time.deltaTime, position.y, position.y);
             return;
         }
-        _isMovingRight = false;
+        isMovingRight = false;
     }
     
     private void MoveLeft()
@@ -96,14 +103,14 @@ public class Eagle : AliveEnemy
             transform.position = new Vector3(position.x - speed * Time.deltaTime, position.y, position.y);
             return;
         }
-        _isMovingRight = true;
+        isMovingRight = true;
     }
 
     private void ScanForPlayer()
     {
-        var scanPosition = GetScanPosition();
-        Debug.DrawRay(scanPosition, -transform.up * attackRange, Color.red);
-        var hit = Physics2D.Raycast(scanPosition, -transform.up, attackRange, playerLayer);
+        var position = transform.position;
+        Debug.DrawRay(position, -transform.up * attackRange, Color.red);
+        var hit = Physics2D.Raycast(position, -transform.up, attackRange, playerLayer);
 
         if (hit.collider != null && !_isAttacking)
         {
@@ -113,15 +120,6 @@ public class Eagle : AliveEnemy
             _returnDestination = transform.position;
             _timeSinceAttack = 0;
         }
-    }
-
-    private Vector3 GetScanPosition()
-    {
-        var position = transform.position;
-        var xScale = transform.localScale.x;
-        var middleLine = (2 * position.x - xScale) / 2;
-
-        return new Vector3(middleLine, position.y, position.z);
     }
 
     private void StopAttack()

@@ -44,6 +44,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096941505364918161}
     m_Modifications:
+    - target: {fileID: 1749286284593265112, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1749286284593265114, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -158,6 +162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spike-skull
       objectReference: {fileID: 0}
+    - target: {fileID: 1341717616728071566, guid: 06639ea893ed845f3bcfa0bba3fa7dff, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4563355176572794087, guid: 06639ea893ed845f3bcfa0bba3fa7dff, type: 3}
       propertyPath: playerHealth
       value: 
@@ -176,6 +184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096941505364918161}
     m_Modifications:
+    - target: {fileID: 1749286284593265112, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1749286284593265114, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -242,6 +254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096941505364918161}
     m_Modifications:
+    - target: {fileID: 1749286284593265112, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1749286284593265114, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -356,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spike-skull (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1341717616728071566, guid: 06639ea893ed845f3bcfa0bba3fa7dff, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4563355176572794087, guid: 06639ea893ed845f3bcfa0bba3fa7dff, type: 3}
       propertyPath: playerHealth
       value: 
@@ -374,6 +394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2096941505364918161}
     m_Modifications:
+    - target: {fileID: 1749286284593265112, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1749286284593265114, guid: 76b7775b870f345b481c32a48d3eda3e, type: 3}
       propertyPath: m_RootOrder
       value: 5

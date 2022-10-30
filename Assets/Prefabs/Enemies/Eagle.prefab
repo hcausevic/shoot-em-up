@@ -111,6 +111,7 @@ MonoBehaviour:
   speed: 1
   distance: 4
   attackRange: 5
+  isMovingRight: 1
 --- !u!61 &906416107061306632
 BoxCollider2D:
   m_ObjectHideFlags: 0
