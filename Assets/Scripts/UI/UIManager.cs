@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
@@ -8,6 +9,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     
     private GemManager _gemManager;
+    
+    [DllImport("__Internal")]
+    private static extern void CloseWindow();
 
     private void Awake()
     {
@@ -54,7 +58,7 @@ public class UIManager : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            Application.ExternalEval("window.close()");
+            CloseWindow();
         }
         else
         {
