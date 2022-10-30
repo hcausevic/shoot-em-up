@@ -231,7 +231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pick all gems and safely return home
+  m_Text: Collect all gems and safely return home
 --- !u!222 &8333170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9720,8 +9720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 51.04801, y: -36.0065}
-  m_SizeDelta: {x: 161.23, y: 72.013}
+  m_AnchoredPosition: {x: 77.2, y: -36.0065}
+  m_SizeDelta: {x: 213.535, y: 72.013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093960287
 MonoBehaviour:
@@ -9750,7 +9750,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 67
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -14769,8 +14769,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 496.75998, y: 38.619026}
-  m_SizeDelta: {x: 257.861, y: 77.237}
+  m_AnchoredPosition: {x: 499, y: 38.619026}
+  m_SizeDelta: {x: 291.271, y: 77.237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593265331
 MonoBehaviour:
